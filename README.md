@@ -846,7 +846,7 @@ bb_wlgen_assetnote() {
 
 | Syntax                                   | Description            |
 |-------------------------------------------|------------------------|
-| `bb_wlgen_assetnote` | Just type the function, result saved in **/opt/wordlista/static_assetnote_merged.txt** |
+| `bb_wlgen_assetnote` | Just type the function, result saved in **/opt/wordlists/static_assetnote_merged.txt** |
 
 <details>
 <summary>Click to expand/collapse image</summary>
