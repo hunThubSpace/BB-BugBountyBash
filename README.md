@@ -5,7 +5,7 @@ This repository contains a collection of custom Bash functions designed to strea
 The functions in this repository are intended for educational and ethical hacking purposes only. Ensure you have permission to test any systems or applications before using these tools. The authors and contributors assume no responsibility for any misuse or illegal activity that may arise from the use of these functions. Always adhere to legal and ethical guidelines in your bug bounty hunting efforts.
 
 
-## Ubuntu Server 22.04 VPS Setup Guide
+## Setup Guide
 To effectively utilize the functions provided in this repository, it is crucial to set up your local environment correctly. For this purpose, I highly recommend using an Ubuntu Server 22.04 VPS. This version of Ubuntu is known for its stability, security, and extensive support, making it an ideal choice for running the scripts and tools included in this repository.
 
 1. **Operating System:**  
@@ -24,7 +24,7 @@ To effectively utilize the functions provided in this repository, it is crucial 
    Install the minimum required tools, as some applications depend on these packages:
 
     ```sh
-    apt install -y git vim curl zsh net-tools tmux make jq unzip postgresql-client crunch gcc python3-apt python3-distutils libssl-dev build-essential libpcap-dev
+    apt install -y git vim curl zsh net-tools tmux make zsh jq unzip postgresql-client crunch gcc python3-apt libssl-dev build-essential libpcap-dev
     ```
 
 5. **Install pip3 (Python Package Manager):**
