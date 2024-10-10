@@ -24,7 +24,7 @@ To effectively utilize the functions provided in this repository, it is crucial 
    Install the minimum required tools, as some applications depend on these packages:
 
     ```sh
-    apt install -y git vim curl zsh net-tools tmux make zsh jq unzip postgresql-client crunch gcc python3-apt libssl-dev build-essential libpcap-dev
+    apt install -y git vim curl zsh net-tools tmux make jq unzip postgresql-client crunch gcc python3-apt libssl-dev build-essential libpcap-dev
     ```
 
 5. **Install pip3 (Python Package Manager):**
@@ -104,6 +104,7 @@ To effectively utilize the functions provided in this repository, it is crucial 
     go install -v github.com/projectdiscovery/cdncheck/cmd/cdncheck@latest
     go install -v github.com/projectdiscovery/naabu/v2/cmd/naabu@latest
     go install -v github.com/hakluke/hakip2host@latest
+    go install -v github.com/d3mondev/puredns/v2@latest
     ```
 
     Add the Go binary path to your `~/.zshrc`:
@@ -839,7 +840,7 @@ bb_wlgen_assetnote() {
     cd /opt/wordlists/
     wget -nv https://wordlists-cdn.assetnote.io/data/manual/best-dns-wordlist.txt
     wget -nv https://wordlists-cdn.assetnote.io/data/manual/2m-subdomains.txt
-    cat best-dns-wordlist.txt 2m-subdomains.txt | sort -u > static_assetnote_merged.txt
+    cat best-dns-wordlist.txt 2m-subdomains.txt | tr '[:upper:]' '[:lower:]' | sort -u > static_assetnote_merged.txt
     rm -rf best-dns-wordlist.txt 2m-subdomains.txt; cd - 2> /dev/null
 }
 ```
@@ -926,7 +927,8 @@ The `bb_dns_static` function resolves DNS records for a specified domain or list
 ```sh
 bb_dns_static() {
     if [[ "$1" == "-" ]]; then input=$(cat); else input="$1"; fi
-    shuffledns -silent -d "$input" -mode resolve -list "$2" -r ~/.resolvers -m massdns -o dns_static.txt
+    puredns resolve $2 --rate-limit 800 -w dns_static.txt
+    #shuffledns -silent -d "$input" -mode resolve -list "$2" -r ~/.resolvers -m massdns -o dns_static.txt
 }
 ```
 
