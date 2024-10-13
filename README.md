@@ -196,66 +196,8 @@ To effectively utilize the functions provided in this repository, it is crucial 
 ---
 
 ## Custom Bash (ZSH) Functions
-One-line summaries for each function:
-
-1. **`bb_get_cert_details`**: Retrieves and displays detailed certificate information for a given domain or list of domains using OpenSSL.
-
-2. **`bb_get_cert_brief`**: Extracts and summarizes issuer, subject, and DNS information from SSL certificates for specified domains.
-
-3. **`bb_get_cert_subdomain`**: Lists unique subdomains found in the DNS fields of SSL certificates for a given domain or list.
-
-4. **`bb_email2domain_viewdns`**: Searches for domains associated with an email address using the ViewDNS service.
-
-5. **`bb_subdomain_dns_rapiddns`**: Fetches and lists unique subdomains for a specified domain using the RapidDNS service.
-
-6. **`bb_cidr_remove_cdn`**: Removes CDN IP addresses from a list of CIDR notations using the `mapcidr` and `cdncheck` tools.
-
-7. **`bb_asn2cidr_details`**: Retrieves and formats details about IPv4 prefixes associated with a specified ASN using the BGPView API.
-
-8. **`bb_asn2cidr`**: Lists all IPv4 prefixes associated with a specified ASN using the BGPView API.
-
-9. **`bb_ipcidr2asn_details`**: Displays ASN details, including IP and registry information, for a specified CIDR block using the Cymru WHOIS service.
-
-10. **`bb_ipcidr2asn`**: Retrieves the ASN for a specified CIDR block using the Cymru WHOIS service.
-
-11. **`bb_ipscan_naabu`**: Scans a specified CIDR for open ports using the `naabu` tool.
-
-12. **`bb_ipscan_masscan`**: Scans a specified CIDR for open ports using the `masscan` tool.
-
-13. **`bb_get_ptr`**: Retrieves and lists PTR records for a given IP address or list of IPs.
-
-14. **`bb_get_ptr_cert`**: Fetches PTR records linked to IP addresses and filters results to show associated certificates.
-
-15. **`bb_crtsh_subdomain`**: Queries the crt.sh database to retrieve unique subdomains associated with a specified domain.
-
-16. **`bb_abuseipdb_subdomain`**: Extracts potential subdomains for an IP address using the AbuseIPDB service.
-
-17. **`bb_chaos_search`**: Searches for URLs related to a specified keyword from the Chaos Data repository.
-
-18. **`bb_chaos_download`**: Downloads and extracts data from URLs associated with a specified keyword from the Chaos Data repository.
-
-19. **`bb_github_subdomain`**: Searches for subdomains related to a specified domain using the Sourcegraph search API.
-
-20. **`bb_wlgen_assetnote`**: Merges and generates a unique wordlist of DNS and subdomain entries from Assetnote.
-
-21. **`bb_wlgen_4char`**: Generates a wordlist of all combinations of 1 to 4 characters using `crunch`.
-
-22. **`bb_wlgen_chaos`**: Creates a unique wordlist from subdomains found in the Chaos Data repository.
-
-23. **`bb_wlgen_dynamic`**: Merges and generates a dynamic wordlist from specified DNS-related files hosted on GitHub.
-
-24. **`bb_dns_static`**: Resolves DNS records for a specified domain or list of domains and outputs the results.
-
-25. **`bb_dns_dynamic_dnsgen`**: Generates dynamic DNS records using `dnsgen` and resolves them for a specified domain.
-
-26. **`bb_dns_dynamic_altdns`**: Generates potential subdomains using `altdns`, resolves them, and outputs the results.
-
-27. **`bb_livesubs_httpx`**: Performs HTTP requests to gather status and technical details for specified URLs using `httpx`.
-
-## Function Details
-
 ### 1. **`bb_get_cert_details`**  
-The `bb_get_cert_details` function retrieves and displays SSL/TLS certificate details for a specified domain or multiple domains read from standard input using `openssl`. It outputs the certificate information in a human-readable format while suppressing error messages.
+Retrieves and displays detailed certificate information for a given domain or list of domains using OpenSSL.
 
 ```sh
 bb_get_cert_details() {
@@ -285,7 +227,7 @@ bb_get_cert_details() {
 ---
 
 ### 2. **`bb_get_cert_brief`**  
-The `bb_get_cert_brief` function retrieves a brief summary of SSL/TLS certificate details for a specified domain or multiple domains read from standard input, focusing on the issuer, subject, and DNS names. It filters the output to present only relevant information in a concise format while suppressing error messages.
+Extracts and summarizes issuer, subject, and DNS information from SSL certificates for specified domains.
 
 ```sh
 bb_get_cert_brief() {
@@ -317,7 +259,7 @@ bb_get_cert_brief() {
 ---
 
 ### 3. **`bb_get_cert_subdomain`**  
-The `bb_get_cert_subdomain` function extracts and lists unique subdomains from the SSL/TLS certificate of a specified domain or multiple domains read from standard input. It filters the output to display only the DNS entries, removes unnecessary text, and ensures that the results are sorted and unique, while suppressing error messages.
+Lists unique subdomains found in the DNS fields of SSL certificates for a given domain or list.
 
 ```sh
 bb_get_cert_subdomain() {
@@ -351,7 +293,7 @@ bb_get_cert_subdomain() {
 ---
 
 ### 4. **`bb_email2domain_viewdns`**  
-The `bb_email2domain_viewdns` function retrieves unique domain names associated with a given email address from the ViewDNS Reverse Whois service. It accepts a single email address or multiple addresses from standard input, using `curl` to fetch data while setting specific headers for cookies and user agents, then processes the HTML response to extract and display the relevant domain names in a sorted, unique list.
+Searches for domains associated with an email address using the ViewDNS service.
 
 ```sh
 bb_email2domain_viewdns() {
@@ -387,7 +329,7 @@ bb_email2domain_viewdns() {
 ---
 
 ### 5. **`bb_subdomain_dns_rapiddns`**  
-The `bb_subdomain_dns_rapiddns` function fetches and lists unique subdomains for a specified domain using the RapidDNS service. It accepts either a single domain as an argument or multiple domains from standard input, utilizing `curl` to retrieve the data and filtering the results to include only subdomains that match the input domain, while ensuring the output is sorted and unique.
+Fetches and lists unique subdomains for a specified domain using the RapidDNS service.
 
 ```sh
 bb_subdomain_dns_rapiddns() {
@@ -416,7 +358,7 @@ bb_subdomain_dns_rapiddns() {
 ---
 
 ### 6. **`bb_cidr_remove_cdn`**
-The `bb_cidr_remove_cdn` function processes CIDR notation input to identify and remove IP ranges associated with Content Delivery Networks (CDNs). It accepts input either from a file (if a valid filename is provided) or directly from standard input, using `mapcidr` to handle the CIDR ranges and `cdncheck` to filter out the CDN-associated addresses, both in silent mode to suppress unnecessary output.
+Removes CDN IP addresses from a list of CIDR notations using the `mapcidr` and `cdncheck` tools.
 
 ```sh
 bb_cidr_remove_cdn() {
@@ -444,7 +386,7 @@ bb_cidr_remove_cdn() {
 ---
 
 ### 7. **`bb_asn2cidr_details`**
-The `bb_asn2cidr_details` function retrieves and displays detailed information about IPv4 prefixes associated with a specified Autonomous System Number (ASN). It accepts either a single ASN as an argument or multiple ASNs from standard input, using `curl` to fetch data from the BGPView API and `jq` to parse the JSON response, formatting the output to show the prefix, name, description (or "N/A" if not available), and country code in a structured table.
+Retrieves and formats details about IPv4 prefixes associated with a specified ASN using the BGPView API.
 
 ```sh
 bb_asn2cidr_details() {
@@ -479,7 +421,7 @@ bb_asn2cidr_details() {
 ---
 
 ### 8. **`bb_asn2cidr`**
-The `bb_asn2cidr` function retrieves and lists the IPv4 prefixes associated with a specified Autonomous System Number (ASN). It accepts either a single ASN as an argument or multiple ASNs from standard input, using `curl` to fetch data from the BGPView API and `jq` to extract the prefixes, suppressing any error output.
+Lists all IPv4 prefixes associated with a specified ASN using the BGPView API.
 
 ```sh
 bb_asn2cidr() {
@@ -509,7 +451,7 @@ bb_asn2cidr() {
 ---
 
 ### 9. **`bb_ipcidr2asn_details`**
-The `bb_ipcidr2asn_details` function retrieves and displays detailed information about the Autonomous System Number (ASN) associated with a specified IP address or CIDR range. It formats the output to show the ASN, IP, BGP prefix, country code (CC), registry, allocation status, and AS name in a structured table. The function accepts either a single IP/CIDR as an argument or reads from standard input, using the Whois service from Cymru for data retrieval and filtering out unnecessary warnings and header lines.
+Displays ASN details, including IP and registry information, for a specified CIDR block using the Cymru WHOIS service.
 
 ```sh
 bb_ipcidr2asn_details() {
@@ -540,7 +482,7 @@ bb_ipcidr2asn_details() {
 ---
 
 ### 10. **`bb_ipcidr2asn`**
-The `bb_ipcidr2asn` function retrieves the Autonomous System Number (ASN) for a specified IP address or CIDR range. It accepts either a single input as an argument or multiple inputs from standard input, using the Whois service from Cymru to fetch data. The output is filtered to exclude warnings and headers, returning only the ASN, and for multiple inputs, the results are sorted and displayed uniquely.
+Retrieves the ASN for a specified CIDR block using the Cymru WHOIS service.
 
 ```sh
 bb_ipcidr2asn() {
@@ -573,7 +515,7 @@ bb_ipcidr2asn() {
 ---
 
 ### 11. **`bb_ipscan_naabu`**
-The `bb_ipscan_naabu` function performs a port scan on specified IP addresses or CIDR ranges using the `naabu` tool. It accepts a single IP/CIDR as an argument or reads from a file or standard input. The function utilizes `mapcidr` to convert CIDR notation into individual IP addresses and scans for a predefined list of ports (such as 80, 443, and others) while suppressing output verbosity.
+Scans a specified CIDR for open ports using the `naabu` tool.
 
 ```sh
 bb_ipscan_naabu(){
@@ -608,7 +550,7 @@ bb_ipscan_naabu(){
 ---
 
 ### 12. **`bb_ipscan_masscan`**
-The `bb_ipscan_masscan` function performs a port scan on specified IP addresses or CIDR ranges using the `masscan` tool. It accepts a single IP/CIDR as an argument or reads from a file or standard input. The function scans for a predefined set of ports (like 80, 443, etc.) and outputs the open ports in the format "IP:port" while suppressing error messages for cleaner output.
+Scans a specified CIDR for open ports using the `masscan` tool.
 
 ```sh
 bb_ipscan_masscan(){
@@ -642,7 +584,7 @@ bb_ipscan_masscan(){
 
 ---
 ### 13. **`bb_get_ptr`**
-The `bb_get_ptr` function retrieves the PTR (pointer) records for specified IP addresses or CIDR ranges. It accepts either a single IP/CIDR as an argument or reads from a file or standard input. The function uses `mapcidr` to convert CIDR notation into individual IP addresses and then queries for PTR records with `dnsx`, sorting and displaying the unique results.
+Retrieves and lists PTR records for a given IP address or list of IPs.
 
 ```sh
 bb_get_ptr(){
@@ -674,7 +616,7 @@ bb_get_ptr(){
 
 ---
 ### 14. **`bb_get_ptr_cert`**
-The `bb_get_ptr_cert` function retrieves unique hostnames associated with the PTR records for specified IP addresses or CIDR ranges. It accepts either a single IP/CIDR as an argument or reads from a file or standard input. The function uses `mapcidr` to convert CIDR notation into individual IP addresses and then applies `hakip2host` to extract the hostnames, sorting and displaying the unique results.
+Fetches PTR records linked to IP addresses and filters results to show associated certificates.
 
 ```sh
 bb_get_ptr_cert(){
@@ -706,7 +648,7 @@ bb_get_ptr_cert(){
 
 ---
 ### 15. **`bb_crtsh_subdomain`**
-The `bb_crtsh_subdomain` function queries the crt.sh database to retrieve unique subdomains associated with a specified domain from certificate data. It accepts a domain as an argument or reads it from standard input if not provided. The function constructs a SQL query, executes it against the crt.sh database using `psql`, and processes the results to filter, clean, and sort the subdomains in lowercase, displaying unique entries. If the query fails, it outputs an error message.
+Queries the crt.sh database to retrieve unique subdomains associated with a specified domain.
 
 ```sh
 bb_crtsh_subdomain() {
@@ -738,7 +680,7 @@ END
 
 ---
 ### 16. **`bb_abuseipdb_subdomain`**
-The `bb_abuseipdb_subdomain` function retrieves potential subdomains associated with an IP address from the AbuseIPDB website. It accepts an IP address as an argument or reads from standard input if not provided. The function uses `curl` to fetch the data while including a session cookie and user agent for access, then processes the HTML response to extract and format subdomain entries. After execution, it cleans up the session variables.
+Extracts potential subdomains for an IP address using the AbuseIPDB service.
 
 ```sh
 bb_abuseipdb_subdomain(){
@@ -763,7 +705,7 @@ bb_abuseipdb_subdomain(){
 
 ---
 ### 17. **`bb_chaos_search`**
-The `bb_chaos_search` function searches for URLs related to a specified input from the Chaos Data repository. It accepts a single keyword as an argument or reads from standard input if no argument is provided. The function fetches the index data from the Chaos Data API using `curl`, processes the JSON response with `jq` to extract URLs, and filters the results to display only those matching the input.
+Searches for URLs related to a specified keyword from the Chaos Data repository.
 
 ```sh
 bb_chaos_search() {
@@ -787,7 +729,7 @@ bb_chaos_search() {
 
 ---
 ### 18. **`bb_chaos_download`**
-The `bb_chaos_download` function downloads and extracts data from URLs related to a specified input from the Chaos Data repository. It creates a temporary directory called `chaos`, retrieves the index data using `curl`, and filters for URLs matching the input. The function then uses `wget` to download each link and extracts the contents of any ZIP files in the directory. Finally, it cleans up by removing the ZIP files and temporary files before returning to the original directory.
+Downloads and extracts data from URLs associated with a specified keyword from the Chaos Data repository.
 
 ```sh
 bb_chaos_download() {
@@ -814,7 +756,7 @@ bb_chaos_download() {
 
 ---
 ### 19. **`bb_github_subdomain`**
-The `bb_github_subdomain` function searches for subdomains associated with a specified domain using the Sourcegraph search API. It accepts a domain as an argument or reads from standard input if no argument is provided. The function constructs a search query to look for subdomains in repositories, retrieves the results in JSON format, and processes them with `jq` to extract relevant matches. It then formats the output to show unique subdomains in lowercase. After execution, it cleans up the environment variables used for the search.
+Searches for subdomains related to a specified domain using the Sourcegraph search API.
 
 ```sh
 bb_github_subdomain(){
@@ -834,7 +776,8 @@ bb_github_subdomain(){
 | `bb_github_subdomain tesla.com` | Argument, Domain |
 ---
 ### 20. **`bb_wlgen_assetnote`**
-The `bb_wlgen_assetnote` function generates a merged wordlist of DNS and subdomain entries from Assetnote. It changes to the `/opt/wordlists/` directory, downloads two specific wordlists from the Assetnote CDN, and merges them into a single file named `static_assetnote_merged.txt`, ensuring uniqueness in the entries. After merging, it removes the original wordlist files and returns to the previous directory. (**Static Wordlist**)
+Merges and generates a unique wordlist of DNS and subdomain entries from Assetnote.
+
 ```sh
 bb_wlgen_assetnote() {
     cd /opt/wordlists/
@@ -857,7 +800,7 @@ bb_wlgen_assetnote() {
 
 ---
 ### 21. **`bb_wlgen_4char`**
-The `bb_wlgen_4char` function generates a wordlist of all possible combinations of 1 to 4 characters using lowercase letters and numbers. It utilizes the `crunch` tool to create this list and saves it to the file `/opt/wordlists/static_4_characters.txt`. (**Static Wordlist**)
+Generates a wordlist of all combinations of 1 to 4 characters using `crunch`.
 
 ```sh
 bb_wlgen_4char() {
@@ -877,7 +820,7 @@ bb_wlgen_4char() {
 
 ---
 ### 22. **`bb_wlgen_chaos`**
-The `bb_wlgen_chaos` function generates a wordlist from the Chaos Data repository. It changes to the `/opt/wordlists` directory, initiates a download using the `bb_chaos_download` function with a wildcard search pattern, and removes any temporary ZIP files created during the process. The function then processes the downloaded data to extract unique base domain names, filtering out entries containing asterisks or underscores, and saves the final results to `static_chaos.txt`. Finally, it cleans up by deleting the chaos directory and returns to the home directory. (**Static Wordlist**)
+Creates a unique wordlist from subdomains found in the Chaos Data repository.
 
 ```sh
 bb_wlgen_chaos() {
@@ -900,7 +843,7 @@ bb_wlgen_chaos() {
 
 ---
 ### 23. **`bb_wlgen_dynamic`**
-The `bb_wlgen_dynamic` function creates a dynamic wordlist for DNS enumeration. It navigates to the `/opt/wordlists/` directory, downloads two wordlists from GitHub repositories, merges them, and removes duplicates, saving the final output to `dynamic_dnsgalt.txt`. After merging, it deletes the original downloaded files and returns to the previous directory, suppressing output. (**Dynamic Wordlist**)
+Merges and generates a dynamic wordlist from specified DNS-related files hosted on GitHub.
 
 ```sh
 bb_wlgen_dynamic() {
@@ -922,7 +865,7 @@ bb_wlgen_dynamic() {
 
 ---
 ### 24. **`bb_dns_static`**
-The `bb_dns_static` function resolves DNS records for a specified domain or list of domains. It accepts a domain as an argument or reads from standard input if the argument is a hyphen (`-`). The function uses `shuffledns` in silent mode to resolve the domains listed in the second argument (`$2`), utilizing resolvers specified in `~/.resolvers` and the `massdns` method. The results are saved to a file named `dns_static.txt`.
+Resolves DNS records for a specified domain or list of domains and outputs the results.
 
 ```sh
 bb_dns_static() {
@@ -939,7 +882,7 @@ bb_dns_static() {
 
 ---
 ### 25. **`bb_dns_dynamic_dnsgen`**
-The `bb_dns_dynamic_dnsgen` function generates dynamic DNS records for a specified domain using the `dnsgen` tool. It accepts a domain or a list of domains from standard input if the first argument is a hyphen (`-`). The second argument specifies the domain to resolve, and the third argument is the wordlist file to use for generating potential subdomains. The function pipes the generated subdomains to `shuffledns`, which resolves them using resolvers specified in `~/.resolvers`, saving the results to a file named `dns_dynamic.txt`.
+Generates dynamic DNS records using `dnsgen` and resolves them for a specified domain.
 
 ```sh
 bb_dns_dynamic_dnsgen() {
@@ -954,7 +897,7 @@ bb_dns_dynamic_dnsgen() {
 
 ---
 ### 26. **`bb_dns_dynamic_altdns`**
-The `bb_dns_dynamic_altdns` function generates potential subdomains for a specified domain using the `altdns` tool. It accepts a domain or list of domains from standard input if the first argument is a hyphen (`-`), in which case it saves the input to `temp_input.txt`. The second argument specifies the domain for resolution, and the third argument is the wordlist file used by `altdns`. After generating potential subdomains, the function resolves them with `shuffledns`, using resolvers from `~/.resolvers` and saving the results to `dns_dynamic.txt`. Finally, it cleans up by removing temporary files.
+Generates potential subdomains using `altdns`, resolves them, and outputs the results.
 
 ```sh
 bb_dns_dynamic_altdns() {
@@ -971,7 +914,7 @@ bb_dns_dynamic_altdns() {
 
 ---
 ### 27. **`bb_livesubs_httpx`**
-The `bb_livesubs_httpx` function performs HTTP requests to check the status and details of specified URLs. It accepts a URL as an argument or reads from standard input if no argument is provided. The function uses `httpx` to make requests, following host redirects and retrieving the page title, status code, CDN information, and technology stack details. It sets a custom User-Agent header to mimic a Safari browser on macOS and operates with a single thread for processing.
+Performs HTTP requests to gather status and technical details for specified URLs using `httpx`.
 
 ```sh
 bb_livesubs_httpx() {
@@ -993,6 +936,22 @@ bb_livesubs_httpx() {
 
 ![Image](Images/image-22.png)
 </details>
+
+---
+### 28. **`bb_livesubs_httpx`**
+Extract subdomains from historical Internet Archive (WaybackURL)
+
+```sh
+bb_gau_subs() {
+    if [[ $# -eq 1 ]]; then input="$1"; else input=$(cat); fi
+    gauplus -subs $input -random-agent | sed "s/\^M//g" | sed "s/\*.//g" | sed -E "s/^\.//g" | cut -d / -f3 | cut -d : -f 1 | sort -u
+}
+```
+
+| Syntax                                   | Description            |
+|-------------------------------------------|------------------------|
+| `google.com \| bb_gau_subs` | STDIN, Domain or Subdomain |
+| `bb_gau_subs google.com` | Argument, Domain or Subdomain |
 
 
 
