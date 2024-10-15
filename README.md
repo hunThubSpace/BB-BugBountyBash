@@ -39,7 +39,7 @@ To effectively utilize the functions provided in this repository, it is crucial 
    Install **mmh3** and **poetry** using pip3:
 
     ```sh
-    pip install mmh3 poetry
+    pip install mmh3 poetry --break-system-packages
     ```
 
 7. **Install ZSH & Oh My Zsh:**  
@@ -152,13 +152,13 @@ To effectively utilize the functions provided in this repository, it is crucial 
     - **Dnsgen:**
 
       ```sh
-      python3 -m pip install dnsgen
+      python3 -m pip install dnsgen --break-system-packages
       ```
 
     - **Altdns:**
 
       ```sh
-      pip3 install py-altdns
+      pip3 install py-altdns --break-system-packages
       ```
 
     - **Masscan:**
